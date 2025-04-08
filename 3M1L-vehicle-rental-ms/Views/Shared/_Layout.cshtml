@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["title"]</title>
+</head>
+<body>
+    <a asp-controller="Home" asp-action="Index">Home</a>
+    <a asp-controller="Vehicle" asp-action="Index">Vehicles</a>
+    @* <a asp-controller="Customer" asp-action="Index">Customers</a>
+    <a asp-controller="Report" asp-action="Index">Reports</a> *@
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
