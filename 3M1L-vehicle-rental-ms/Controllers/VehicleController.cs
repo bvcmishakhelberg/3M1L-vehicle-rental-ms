@@ -20,12 +20,16 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Vehicle
+        [HttpGet]
+        [Route("Vehicle")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Vehicle.ToListAsync());
         }
 
         // GET: Vehicle/Details/5
+        [HttpGet]
+        [Route("Vehicle/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -44,16 +48,16 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Vehicle/Create
+        [HttpGet]
+        [Route("Vehicle/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Vehicle/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Vehicle/Create")]
         public async Task<IActionResult> Create([Bind("VehicleID,VehicleManufacturer,VehicleModel,VehicleYear,VehicleAvailability,VehicleStatus")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
@@ -66,6 +70,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Vehicle/Edit/5
+        [HttpGet]
+        [Route("Vehicle/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,10 +88,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // POST: Vehicle/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Vehicle/Edit/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("VehicleID,VehicleManufacturer,VehicleModel,VehicleYear,VehicleAvailability,VehicleStatus")] Vehicle vehicle)
         {
             if (id != vehicle.VehicleID)
@@ -117,6 +121,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Vehicle/Delete/5
+        [HttpGet]
+        [Route("Vehicle/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -134,20 +140,6 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             return View(vehicle);
         }
 
-        // POST: Vehicle/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var vehicle = await _context.Vehicle.FindAsync(id);
-            if (vehicle != null)
-            {
-                _context.Vehicle.Remove(vehicle);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         private bool VehicleExists(int id)
         {
