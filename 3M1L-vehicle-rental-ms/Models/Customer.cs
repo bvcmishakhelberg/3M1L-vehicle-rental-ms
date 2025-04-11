@@ -10,27 +10,27 @@ namespace _3M1L_vehicle_rental_ms.Models
 
         [Required(ErrorMessage = "Name is required")]
         [Display(Name = "Customer Name")]
-        public string CustomerName { get; set; }
+        public required string CustomerName { get; set; }
 
         [Required(ErrorMessage = "Please enter customer type (Business/Personal)")]
         [Display(Name = "Customer Type: Business/Personal")]
-        public string CustomerType { get; set; }
+        public required string CustomerType { get; set; }
 
 
         [Required(ErrorMessage = "Address is required")]
         [Display(Name = "Address")]
-        public string CustomerAddress { get; set; }
+        public required string CustomerAddress { get; set; }
 
 
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]
         [Display(Name = "Email")]
-        public string CustomerEmail { get; set; }
+        public required string CustomerEmail { get; set; }
 
 
         [Required(ErrorMessage = "Phone number is required")]
         [Phone(ErrorMessage = "Invalid phone number")]
         [Display(Name = "Phone Number")]
-        public string PhoneNumber { get; set; } 
+        public required string PhoneNumber { get; set; } 
     }
 }
