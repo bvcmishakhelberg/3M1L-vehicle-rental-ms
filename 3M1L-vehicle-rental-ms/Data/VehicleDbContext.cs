@@ -5,7 +5,7 @@ namespace _3M1LVehicleRentalsMs.Data
 {
     public class VehicleDbContext: DbContext
     {
-        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Vehicle> Vehicle { get; set; }
         public VehicleDbContext(DbContextOptions<VehicleDbContext> options) : base(options)
         {
 

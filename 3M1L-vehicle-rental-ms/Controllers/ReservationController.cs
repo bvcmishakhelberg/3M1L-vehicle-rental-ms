@@ -22,7 +22,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
         // GET: Reservation
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reservations.ToListAsync());
+            return View(await _context.Reservation.ToListAsync());
         }
 
         // GET: Reservation/Details/5
@@ -33,7 +33,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservations
+            var reservation = await _context.Reservation
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -73,7 +73,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservations.FindAsync(id);
+            var reservation = await _context.Reservation.FindAsync(id);
             if (reservation == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservations
+            var reservation = await _context.Reservation
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -139,10 +139,10 @@ namespace _3M1LVehicleRentalsMs.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var reservation = await _context.Reservations.FindAsync(id);
+            var reservation = await _context.Reservation.FindAsync(id);
             if (reservation != null)
             {
-                _context.Reservations.Remove(reservation);
+                _context.Reservation.Remove(reservation);
             }
 
             await _context.SaveChangesAsync();
@@ -151,7 +151,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         private bool ReservationExists(int id)
         {
-            return _context.Reservations.Any(e => e.ReservationId == id);
+            return _context.Reservation.Any(e => e.ReservationId == id);
         }
     }
 }

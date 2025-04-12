@@ -5,7 +5,7 @@ namespace _3M1LVehicleRentalsMs.Data
 {
     public class ReservationDbContext:DbContext
     {
-        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Reservation> Reservation { get; set; }
         public ReservationDbContext(DbContextOptions<ReservationDbContext> options) : base(options)
         {
 
