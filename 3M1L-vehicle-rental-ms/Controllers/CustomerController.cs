@@ -12,11 +12,11 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly CustomerDbContext _context;
+        private readonly CustomerDbContext _customerDbContext;
 
-        public CustomerController(CustomerDbContext context)
+        public CustomerController(CustomerDbContext customerDbContext)
         {
-            _context = context;
+            _customerDbContext = customerDbContext;
         }
 
         // GET: Customer
@@ -24,7 +24,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         [Route("Customer")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Customers.ToListAsync());
+            return View(await _customerDbContext.Customers.ToListAsync());
         }
 
         // GET: Customer/Details/5
@@ -37,7 +37,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var customer = await _customerDbContext.Customers
                 .FirstOrDefaultAsync(m => m.CustomerID == id);
             if (customer == null)
             {
@@ -62,8 +62,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(customer);
-                await _context.SaveChangesAsync();
+                _customerDbContext.Add(customer);
+                await _customerDbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
@@ -79,7 +79,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers.FindAsync(id);
+            var customer = await _customerDbContext.Customers.FindAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -101,8 +101,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _context.Update(customer);
-                    await _context.SaveChangesAsync();
+                    _customerDbContext.Update(customer);
+                    await _customerDbContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -130,7 +130,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var customer = await _context.Customers
+            var customer = await _customerDbContext.Customers
                 .FirstOrDefaultAsync(m => m.CustomerID == id);
             if (customer == null)
             {
@@ -142,7 +142,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.CustomerID == id);
+            return _customerDbContext.Customers.Any(e => e.CustomerID == id);
         }
     }
 }

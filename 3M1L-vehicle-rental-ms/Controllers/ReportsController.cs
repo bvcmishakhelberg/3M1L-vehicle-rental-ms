@@ -12,11 +12,11 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 {
     public class ReportsController : Controller
     {
-        private readonly ReportDbContext _context;
+        private readonly ReportDbContext reportDbContext;
 
-        public ReportsController(ReportDbContext context)
+        public ReportsController(ReportDbContext reportDbContext)
         {
-            _context = context;
+            this.reportDbContext = reportDbContext;
         }
 
         // GET: Reports
@@ -24,7 +24,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         [Route("Reports")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reports.ToListAsync());
+            return View(await reportDbContext.Reports.ToListAsync());
         }
 
         // GET: Reports/Details/5
@@ -37,7 +37,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reports = await _context.Reports
+            var reports = await reportDbContext.Reports
                 .FirstOrDefaultAsync(m => m.ReportId == id);
             if (reports == null)
             {
@@ -63,8 +63,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reports);
-                await _context.SaveChangesAsync();
+                reportDbContext.Add(reports);
+                await reportDbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(reports);
@@ -80,7 +80,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reports = await _context.Reports.FindAsync(id);
+            var reports = await reportDbContext.Reports.FindAsync(id);
             if (reports == null)
             {
                 return NotFound();
@@ -102,8 +102,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _context.Update(reports);
-                    await _context.SaveChangesAsync();
+                    reportDbContext.Update(reports);
+                    await reportDbContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -131,7 +131,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reports = await _context.Reports
+            var reports = await reportDbContext.Reports
                 .FirstOrDefaultAsync(m => m.ReportId == id);
             if (reports == null)
             {
@@ -142,7 +142,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
         private bool ReportsExists(int id)
         {
-            return _context.Reports.Any(e => e.ReportId == id);
+            return reportDbContext.Reports.Any(e => e.ReportId == id);
         }
     }
 }

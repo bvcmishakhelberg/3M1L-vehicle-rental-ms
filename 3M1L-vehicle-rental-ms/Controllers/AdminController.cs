@@ -12,11 +12,11 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly AdminDbContext _context;
+        private readonly AdminDbContext _adminDbcontext;
 
-        public AdminController(AdminDbContext context)
+        public AdminController(AdminDbContext adminDbcontext)
         {
-            _context = context;
+            _adminDbcontext = adminDbcontext;
         }
 
         // GET: Admin
@@ -24,7 +24,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         [Route("Admin")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Admins.ToListAsync());
+            return View(await _adminDbcontext.Admins.ToListAsync());
         }
 
         // GET: Admin/Details/5
@@ -37,7 +37,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins
+            var admin = await _adminDbcontext.Admins
                 .FirstOrDefaultAsync(m => m.AdminID == id);
             if (admin == null)
             {
@@ -62,8 +62,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(admin);
-                await _context.SaveChangesAsync();
+                _adminDbcontext.Add(admin);
+                await _adminDbcontext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(admin);
@@ -79,7 +79,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins.FindAsync(id);
+            var admin = await _adminDbcontext.Admins.FindAsync(id);
             if (admin == null)
             {
                 return NotFound();
@@ -101,8 +101,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _context.Update(admin);
-                    await _context.SaveChangesAsync();
+                    _adminDbcontext.Update(admin);
+                    await _adminDbcontext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -130,7 +130,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var admin = await _context.Admins
+            var admin = await _adminDbcontext.Admins
                 .FirstOrDefaultAsync(m => m.AdminID == id);
             if (admin == null)
             {
@@ -142,7 +142,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         private bool AdminExists(int id)
         {
-            return _context.Admins.Any(e => e.AdminID == id);
+            return _adminDbcontext.Admins.Any(e => e.AdminID == id);
         }
     }
 }

@@ -12,19 +12,21 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 {
     public class ReservationController : Controller
     {
-        private readonly ReservationDbContext _context;
+        private readonly ReservationDbContext _reservationDbContext;
 
-        public ReservationController(ReservationDbContext context)
+        public ReservationController(ReservationDbContext reservationDbContext)
         {
-            _context = context;
+            _reservationDbContext = reservationDbContext;
         }
 
         // GET: Reservation
         [HttpGet]
-        [HttpGet("Reservation")]
+        [Route("Reservation")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reservation.ToListAsync());
+            var reservations = await _reservationDbContext.Reservation.ToListAsync();
+            return View(reservations);
+       
         }
 
         // GET: Reservation/Details/5
@@ -37,7 +39,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservation
+            var reservation = await _reservationDbContext.Reservation
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -62,8 +64,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reservation);
-                await _context.SaveChangesAsync();
+                _reservationDbContext.Add(reservation);
+                await _reservationDbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(reservation);
@@ -79,7 +81,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservation.FindAsync(id);
+            var reservation = await _reservationDbContext.Reservation.FindAsync(id);
             if (reservation == null)
             {
                 return NotFound();
@@ -102,8 +104,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _context.Update(reservation);
-                    await _context.SaveChangesAsync();
+                    _reservationDbContext.Update(reservation);
+                    await _reservationDbContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -131,7 +133,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservation
+            var reservation = await _reservationDbContext.Reservation
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -143,7 +145,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         private bool ReservationExists(int id)
         {
-            return _context.Reservation.Any(e => e.ReservationId == id);
+            return _reservationDbContext.Reservation.Any(e => e.ReservationId == id);
         }
     }
 }

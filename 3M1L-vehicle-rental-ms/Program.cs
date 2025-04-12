@@ -14,4 +14,5 @@ builder.Services.AddDbContext<VehicleDbContext>(options => options.UseSqlServer(
 var app = builder.Build();
 
 app.MapControllers();
+
 app.Run();

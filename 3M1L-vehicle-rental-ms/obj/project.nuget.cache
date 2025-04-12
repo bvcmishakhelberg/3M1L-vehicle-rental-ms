@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VQeEdY/9Xqw=",
+  "dgSpecHash": "J9Bddsa48u4=",
   "success": true,
-  "projectFilePath": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
+  "projectFilePath": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\3M1LVehiclRentalMs.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LeiDi\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\LeiDi\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

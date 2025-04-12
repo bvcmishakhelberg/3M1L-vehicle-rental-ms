@@ -7758,9 +7758,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
-      "projectName": "3M1L-vehicle-rental-ms",
-      "projectPath": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
+      "projectUniqueName": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\3M1LVehiclRentalMs.csproj",
+      "projectName": "3M1LVehiclRentalMs",
+      "projectPath": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\3M1LVehiclRentalMs.csproj",
       "packagesPath": "C:\\Users\\LeiDi\\.nuget\\packages\\",
       "outputPath": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\obj\\",
       "projectStyle": "PackageReference",
