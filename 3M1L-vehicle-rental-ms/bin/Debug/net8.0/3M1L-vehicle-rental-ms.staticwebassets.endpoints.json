@@ -1,5 +1,88 @@
 {
   "Version": 1,
   "ManifestType": "Build",
-  "Endpoints": []
+  "Endpoints": [
+    {
+      "Route": "CSS/styles.css",
+      "AssetFile": "CSS/styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1534"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 19:05:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw="
+        }
+      ]
+    },
+    {
+      "Route": "CSS/styles.uhxwim7oic.css",
+      "AssetFile": "CSS/styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1534"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 19:05:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uhxwim7oic"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw="
+        },
+        {
+          "Name": "label",
+          "Value": "CSS/styles.css"
+        }
+      ]
+    }
+  ]
 }

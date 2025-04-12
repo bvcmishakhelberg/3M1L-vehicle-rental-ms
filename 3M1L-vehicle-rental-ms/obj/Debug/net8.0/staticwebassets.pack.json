@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\wwwroot\\CSS\\styles.css",
+      "PackagePath": "staticwebassets\\CSS\\styles.css"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.3M1L-vehicle-rental-ms.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.3M1L-vehicle-rental-ms.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.3M1L-vehicle-rental-ms.props",
+      "PackagePath": "build\\3M1L-vehicle-rental-ms.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.3M1L-vehicle-rental-ms.props",
+      "PackagePath": "buildMultiTargeting\\3M1L-vehicle-rental-ms.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.3M1L-vehicle-rental-ms.props",
+      "PackagePath": "buildTransitive\\3M1L-vehicle-rental-ms.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

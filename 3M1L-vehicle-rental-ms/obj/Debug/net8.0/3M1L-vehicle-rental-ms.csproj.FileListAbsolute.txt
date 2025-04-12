@@ -453,3 +453,4 @@ C:\Programming\School\second-term\asp-dotnet\VehicleRentalMS\3M1L-vehicle-rental
 C:\Programming\School\second-term\asp-dotnet\VehicleRentalMS\3M1L-vehicle-rental-ms\3M1L-vehicle-rental-ms\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Programming\School\second-term\asp-dotnet\VehicleRentalMS\3M1L-vehicle-rental-ms\3M1L-vehicle-rental-ms\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Programming\School\second-term\asp-dotnet\VehicleRentalMS\3M1L-vehicle-rental-ms\3M1L-vehicle-rental-ms\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Programming\School\second-term\asp-dotnet\VehicleRentalMS\3M1L-vehicle-rental-ms\3M1L-vehicle-rental-ms\bin\Debug\net8.0\3M1L-vehicle-rental-ms.staticwebassets.runtime.json

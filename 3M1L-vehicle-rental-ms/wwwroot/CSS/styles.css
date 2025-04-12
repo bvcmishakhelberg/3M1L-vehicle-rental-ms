@@ -1,0 +1,120 @@
+﻿/* CSS reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set core body defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: "Urbanist", "Happy Monkey", sans-serif;
+}
+
+/* Remove default list styles */
+ol,
+ul {
+    list-style: none;
+}
+
+/* Remove default link styles */
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:focus,
+a:hover,
+a:visited,
+a:active {
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+/* Reset headings and text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    font-weight: inherit;
+}
+
+/* Reset buttons */
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+/* Media elements */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 0.5rem;
+}
+/* END OF CSS RESET */
+
+/* Variables */
+:root {
+
+}
+
+/* Global */
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation */
+nav.flex-row {
+    justify-content: space-between;
+    padding: 20px;
+    background-color: gray;
+}
+
+nav > div {
+    gap: 20px;
+}
+
+nav a {
+    color: #000;
+}
+
+/* Log In and Register */

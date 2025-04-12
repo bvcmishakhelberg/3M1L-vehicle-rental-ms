@@ -4,14 +4,19 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["title"]</title>
+    <link rel="stylesheet" href="~/CSS/styles.css">
 </head>
 <body>
-    <nav>
-        <a asp-controller="Home" asp-action="Index">Home</a>
-        <a asp-controller="Vehicle" asp-action="Index">Vehicles</a>
-        <a asp-controller="Customer" asp-action="Index">Customers</a>
-        <a asp-controller="Account" asp-action="Login">Login</a>
-        <a asp-controller="Account" asp-action="Register">Register</a>
+    <nav class="navigation flex-row">
+        <div class="flex-row">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Vehicle" asp-action="Index">Vehicles</a>
+            <a asp-controller="Customer" asp-action="Index">Customers</a>
+        </div>
+        <div class="flex-row">
+            <a asp-controller="Account" asp-action="Login">Login</a>
+            <a asp-controller="Account" asp-action="Register">Register</a>
+        </div>
     </nav>
 
     @* <a asp-controller="Customer" asp-action="Index">Customers</a>

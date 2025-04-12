@@ -1,12 +1,125 @@
 {
   "Version": 1,
-  "Hash": "jRTLpbGylPQsOHQgJM5xqx6jKv7WmL5MuYrRcHCxzOY=",
+  "Hash": "LNQSKBbXAikGcRxBzzlk6XTZQaL1aoxfvqHf99TfYuo=",
   "Source": "3M1L-vehicle-rental-ms",
   "BasePath": "_content/3M1L-vehicle-rental-ms",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "3M1L-vehicle-rental-ms\\wwwroot",
+      "Source": "3M1L-vehicle-rental-ms",
+      "ContentRoot": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\wwwroot\\",
+      "BasePath": "_content/3M1L-vehicle-rental-ms",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\wwwroot\\CSS\\styles.css",
+      "SourceId": "3M1L-vehicle-rental-ms",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\wwwroot\\",
+      "BasePath": "_content/3M1L-vehicle-rental-ms",
+      "RelativePath": "CSS/styles#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "uhxwim7oic",
+      "Integrity": "brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CSS\\styles.css"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "CSS/styles.css",
+      "AssetFile": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\wwwroot\\CSS\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1534"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 19:05:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw="
+        }
+      ]
+    },
+    {
+      "Route": "CSS/styles.uhxwim7oic.css",
+      "AssetFile": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\wwwroot\\CSS\\styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1534"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 12 Apr 2025 19:05:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uhxwim7oic"
+        },
+        {
+          "Name": "label",
+          "Value": "CSS/styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-brQfbfuG3Tq8oBuNA+PggsvwVqHyM/8NnHPQuTnghNw="
+        }
+      ]
+    }
+  ]
 }
