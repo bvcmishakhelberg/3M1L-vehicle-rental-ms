@@ -28,6 +28,14 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/Account/LogIn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dJbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/Account/SignUp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/Customer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,20 +44,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/LogIn/LogIn.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9nSW5cTG9nSW4uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/Report/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/SignUp/SignUp.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2lnblVwXFNpZ25VcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Programming/School/second-term/asp-dotnet/VehicleRentalMS/3M1L-vehicle-rental-ms/3M1L-vehicle-rental-ms/Views/Vehicle/Add.cshtml]
