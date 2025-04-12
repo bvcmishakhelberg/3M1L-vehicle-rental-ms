@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
-namespace _3M1L_vehicle_rental_ms.Models
+namespace _3M1LVehicleRentalsMs.Models
 {
     public class Reservation
     {
@@ -22,6 +23,6 @@ namespace _3M1L_vehicle_rental_ms.Models
         
         [Required]
         [Precision(18, 2)]
-        public required Double ReservationCost { get; set; }
+        public required double ReservationCost { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace _3M1L_vehicle_rental_ms.Migrations
+namespace _3M1LVehicleRentalsMs.Migrations
 {
     /// <inheritdoc />
     public partial class CreateProject : Migration

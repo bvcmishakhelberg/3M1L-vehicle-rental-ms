@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace _3M1L_vehicle_rental_ms.Models
+namespace _3M1LVehicleRentalsMs.Models
 {
     public class Vehicle
     {

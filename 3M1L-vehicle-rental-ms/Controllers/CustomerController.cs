@@ -5,31 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using _3M1L_vehicle_rental_ms.Data;
-using _3M1L_vehicle_rental_ms.Models;
+using _3M1LVehicleRentalsMs.Data;
+using _3M1LVehicleRentalsMs.Models;
 
-namespace _3M1L_vehicle_rental_ms.Controllers
+namespace _3M1LVehicleRentalsMs.Controllers
 {
     public class CustomerController : Controller
     {
-        private readonly CustomerDbContext _customerDbContext;
+        private readonly CustomerDbContext _context;
 
-        public CustomerController(CustomerDbContext customerDbContext)
+        public CustomerController(CustomerDbContext context)
         {
-            _customerDbContext = customerDbContext;
+            _context = context;
         }
 
         // GET: Customer
-        [HttpGet]
-        [Route("Customer")]
         public async Task<IActionResult> Index()
         {
-            return View(await _customerDbContext.Customers.ToListAsync());
+            return View(await _context.Customers.ToListAsync());
         }
 
         // GET: Customer/Details/5
-        [HttpGet]
-        [Route("Customer/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,7 +33,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var customer = await _customerDbContext.Customers
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.CustomerID == id);
             if (customer == null)
             {
@@ -48,30 +44,28 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Customer/Create
-        [HttpGet]
-        [Route("Customer/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Customer/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Customer/Create")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerID,CustomerName,CustomerType,CustomerAddress,CustomerEmail,PhoneNumber")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _customerDbContext.Add(customer);
-                await _customerDbContext.SaveChangesAsync();
+                _context.Add(customer);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(customer);
         }
 
         // GET: Customer/Edit/5
-        [HttpGet]
-        [Route("Customer/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +73,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var customer = await _customerDbContext.Customers.FindAsync(id);
+            var customer = await _context.Customers.FindAsync(id);
             if (customer == null)
             {
                 return NotFound();
@@ -88,8 +82,10 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // POST: Customer/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Customer / Edit /{id}")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("CustomerID,CustomerName,CustomerType,CustomerAddress,CustomerEmail,PhoneNumber")] Customer customer)
         {
             if (id != customer.CustomerID)
@@ -101,8 +97,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _customerDbContext.Update(customer);
-                    await _customerDbContext.SaveChangesAsync();
+                    _context.Update(customer);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -121,8 +117,6 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Customer/Delete/5
-        [HttpGet]
-        [Route("Customer/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,7 +124,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var customer = await _customerDbContext.Customers
+            var customer = await _context.Customers
                 .FirstOrDefaultAsync(m => m.CustomerID == id);
             if (customer == null)
             {
@@ -140,9 +134,24 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             return View(customer);
         }
 
+        // POST: Customer/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var customer = await _context.Customers.FindAsync(id);
+            if (customer != null)
+            {
+                _context.Customers.Remove(customer);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool CustomerExists(int id)
         {
-            return _customerDbContext.Customers.Any(e => e.CustomerID == id);
+            return _context.Customers.Any(e => e.CustomerID == id);
         }
     }
 }

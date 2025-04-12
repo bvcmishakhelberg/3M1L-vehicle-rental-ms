@@ -1,9 +1,9 @@
-﻿using _3M1L_vehicle_rental_ms.Models;
+﻿using _3M1LVehicleRentalsMs.Models;
 using Microsoft.EntityFrameworkCore;
 
 
 
-namespace _3M1L_vehicle_rental_ms.Data
+namespace _3M1LVehicleRentalsMs.Data
 {
     public class AdminDbContext:DbContext
     {

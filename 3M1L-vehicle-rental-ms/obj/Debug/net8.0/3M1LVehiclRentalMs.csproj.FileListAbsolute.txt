@@ -284,3 +284,6 @@ C:\Documents\AspProject\3M1L-vehicle-rental-ms\obj\Debug\net8.0\refint\3M1LVehic
 C:\Documents\AspProject\3M1L-vehicle-rental-ms\obj\Debug\net8.0\3M1LVehiclRentalMs.pdb
 C:\Documents\AspProject\3M1L-vehicle-rental-ms\obj\Debug\net8.0\3M1LVehiclRentalMs.genruntimeconfig.cache
 C:\Documents\AspProject\3M1L-vehicle-rental-ms\obj\Debug\net8.0\ref\3M1LVehiclRentalMs.dll
+C:\Documents\AspProject\3M1L-vehicle-rental-ms\bin\Debug\net8.0\3M1LVehiclRentalMs.staticwebassets.runtime.json
+C:\Documents\AspProject\3M1L-vehicle-rental-ms\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Documents\AspProject\3M1L-vehicle-rental-ms\obj\Debug\net8.0\scopedcss\projectbundle\3M1LVehiclRentalMs.bundle.scp.css

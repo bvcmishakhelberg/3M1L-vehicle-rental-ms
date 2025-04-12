@@ -5,31 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using _3M1L_vehicle_rental_ms.Data;
-using _3M1L_vehicle_rental_ms.Models;
+using _3M1LVehicleRentalsMs.Data;
+using _3M1LVehicleRentalsMs.Models;
 
-namespace _3M1L_vehicle_rental_ms.Controllers
+
+namespace _3M1LVehicleRentalsMs.Controllers
 {
     public class AdminController : Controller
     {
-        private readonly AdminDbContext _adminDbcontext;
+        private readonly AdminDbContext _context;
 
-        public AdminController(AdminDbContext adminDbcontext)
+        public AdminController(AdminDbContext context)
         {
-            _adminDbcontext = adminDbcontext;
+            _context = context;
         }
 
         // GET: Admin
-        [HttpGet]
-        [Route("Admin")]
         public async Task<IActionResult> Index()
         {
-            return View(await _adminDbcontext.Admins.ToListAsync());
+            return View(await _context.Admins.ToListAsync());
         }
 
         // GET: Admin/Details/5
-        [HttpGet]
-        [Route("Admin/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,7 +34,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var admin = await _adminDbcontext.Admins
+            var admin = await _context.Admins
                 .FirstOrDefaultAsync(m => m.AdminID == id);
             if (admin == null)
             {
@@ -48,30 +45,28 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Admin/Create
-        [HttpGet]
-        [Route("Admin/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Admin/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Admin/Create")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AdminID,AdminName,AdminEmail,AdminPhoneNumber")] Admin admin)
         {
             if (ModelState.IsValid)
             {
-                _adminDbcontext.Add(admin);
-                await _adminDbcontext.SaveChangesAsync();
+                _context.Add(admin);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(admin);
         }
 
         // GET: Admin/Edit/5
-        [HttpGet]
-        [Route("Admin/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +74,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var admin = await _adminDbcontext.Admins.FindAsync(id);
+            var admin = await _context.Admins.FindAsync(id);
             if (admin == null)
             {
                 return NotFound();
@@ -88,8 +83,10 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // POST: Admin/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Admin/Edit/{id}")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("AdminID,AdminName,AdminEmail,AdminPhoneNumber")] Admin admin)
         {
             if (id != admin.AdminID)
@@ -101,8 +98,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _adminDbcontext.Update(admin);
-                    await _adminDbcontext.SaveChangesAsync();
+                    _context.Update(admin);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -121,8 +118,6 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Admin/Delete/5
-        [HttpGet]
-        [Route("Admin/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,7 +125,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var admin = await _adminDbcontext.Admins
+            var admin = await _context.Admins
                 .FirstOrDefaultAsync(m => m.AdminID == id);
             if (admin == null)
             {
@@ -140,9 +135,24 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             return View(admin);
         }
 
+        // POST: Admin/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var admin = await _context.Admins.FindAsync(id);
+            if (admin != null)
+            {
+                _context.Admins.Remove(admin);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool AdminExists(int id)
         {
-            return _adminDbcontext.Admins.Any(e => e.AdminID == id);
+            return _context.Admins.Any(e => e.AdminID == id);
         }
     }
 }

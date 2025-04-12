@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using _3M1L_vehicle_rental_ms.Data;
+using _3M1LVehicleRentalsMs.Data;
 
 #nullable disable
 
-namespace _3M1L_vehicle_rental_ms.Migrations.ReservationDb
+namespace _3M1LVehicleRentalsMs.Migrations.ReservationDb
 {
     [DbContext(typeof(ReservationDbContext))]
     [Migration("20250412203931_CreateProject")]

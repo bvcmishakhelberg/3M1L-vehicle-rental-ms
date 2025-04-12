@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace _3M1L_vehicle_rental_ms.Migrations.ReportDb
+namespace _3M1LVehicleRentalsMs.Migrations.ReportDb
 {
     /// <inheritdoc />
     public partial class CreateProject : Migration

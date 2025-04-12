@@ -5,33 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using _3M1L_vehicle_rental_ms.Data;
-using _3M1L_vehicle_rental_ms.Models;
+using _3M1LVehicleRentalsMs.Data;
+using _3M1LVehicleRentalsMs.Models;
 
-namespace _3M1L_vehicle_rental_ms.Controllers
+namespace _3M1LVehicleRentalsMs.Controllers
 {
     public class ReservationController : Controller
     {
-        private readonly ReservationDbContext _reservationDbContext;
+        private readonly ReservationDbContext _context;
 
-        public ReservationController(ReservationDbContext reservationDbContext)
+        public ReservationController(ReservationDbContext context)
         {
-            _reservationDbContext = reservationDbContext;
+            _context = context;
         }
 
         // GET: Reservation
-        [HttpGet]
-        [Route("Reservation")]
         public async Task<IActionResult> Index()
         {
-            var reservations = await _reservationDbContext.Reservation.ToListAsync();
-            return View(reservations);
-       
+            return View(await _context.Reservations.ToListAsync());
         }
 
         // GET: Reservation/Details/5
-        [HttpGet]
-        [Route("Reservation/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -39,7 +33,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reservation = await _reservationDbContext.Reservation
+            var reservation = await _context.Reservations
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -50,30 +44,28 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Reservation/Create
-        [HttpGet]
-        [Route("Reservation/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Reservation/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Reservation/Create")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ReservationId,ReservationDate,ReservationCost")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _reservationDbContext.Add(reservation);
-                await _reservationDbContext.SaveChangesAsync();
+                _context.Add(reservation);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(reservation);
         }
 
         // GET: Reservation/Edit/5
-        [HttpGet]
-        [Route("Reservation/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -81,7 +73,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reservation = await _reservationDbContext.Reservation.FindAsync(id);
+            var reservation = await _context.Reservations.FindAsync(id);
             if (reservation == null)
             {
                 return NotFound();
@@ -90,9 +82,10 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // POST: Reservation/Edit/5
-
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Reservation/Edit/{id}")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ReservationId,ReservationDate,ReservationCost")] Reservation reservation)
         {
             if (id != reservation.ReservationId)
@@ -104,8 +97,8 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             {
                 try
                 {
-                    _reservationDbContext.Update(reservation);
-                    await _reservationDbContext.SaveChangesAsync();
+                    _context.Update(reservation);
+                    await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,8 +117,6 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
         // GET: Reservation/Delete/5
-        [HttpGet]
-        [Route("Reservation/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -133,7 +124,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 return NotFound();
             }
 
-            var reservation = await _reservationDbContext.Reservation
+            var reservation = await _context.Reservations
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -143,9 +134,24 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             return View(reservation);
         }
 
+        // POST: Reservation/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var reservation = await _context.Reservations.FindAsync(id);
+            if (reservation != null)
+            {
+                _context.Reservations.Remove(reservation);
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         private bool ReservationExists(int id)
         {
-            return _reservationDbContext.Reservation.Any(e => e.ReservationId == id);
+            return _context.Reservations.Any(e => e.ReservationId == id);
         }
     }
 }
