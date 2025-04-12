@@ -1,0 +1,11 @@
+﻿@model _3M1L_vehicle_rental_ms.Models.User
+
+<form asp-action="Register" method="post">
+    <label>Username:</label>
+    <input asp-for="Username" />
+    <label>Email:</label>
+    <input asp-for="Email" type="email" />
+    <label>Password:</label>
+    <input asp-for="PasswordHash" type="password" />
+    <button type="submit">Register</button>
+</form>
