@@ -184,25 +184,25 @@ namespace _3M1L_vehicle_rental_ms.Migrations.ReportDb
                     b.HasOne("_3M1L_vehicle_rental_ms.Models.Admin", "Admin")
                         .WithMany()
                         .HasForeignKey("AdminID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_3M1L_vehicle_rental_ms.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_3M1L_vehicle_rental_ms.Models.Reservation", "Reservation")
                         .WithMany()
                         .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_3M1L_vehicle_rental_ms.Models.Vehicle", "Vehicle")
                         .WithMany()
                         .HasForeignKey("VehicleID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Admin");

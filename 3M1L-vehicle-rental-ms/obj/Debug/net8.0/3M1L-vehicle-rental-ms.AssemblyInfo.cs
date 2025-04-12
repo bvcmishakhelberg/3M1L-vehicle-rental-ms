@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("3M1L-vehicle-rental-ms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cd0f0a6a00c9ae018632989029d5e09f832489c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75e82454201278216146dcb2348521a92ffa3678")]
 [assembly: System.Reflection.AssemblyProductAttribute("3M1L-vehicle-rental-ms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("3M1L-vehicle-rental-ms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

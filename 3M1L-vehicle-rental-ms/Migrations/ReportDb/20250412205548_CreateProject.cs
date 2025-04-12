@@ -113,26 +113,22 @@ namespace _3M1L_vehicle_rental_ms.Migrations.ReportDb
                         name: "FK_Reports_Admin_AdminID",
                         column: x => x.AdminID,
                         principalTable: "Admin",
-                        principalColumn: "AdminID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AdminID");
                     table.ForeignKey(
                         name: "FK_Reports_Customer_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customer",
-                        principalColumn: "CustomerID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "CustomerID");
                     table.ForeignKey(
                         name: "FK_Reports_Reservation_ReservationId",
                         column: x => x.ReservationId,
                         principalTable: "Reservation",
-                        principalColumn: "ReservationId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "ReservationId");
                     table.ForeignKey(
                         name: "FK_Reports_Vehicle_VehicleID",
                         column: x => x.VehicleID,
                         principalTable: "Vehicle",
-                        principalColumn: "VehicleID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "VehicleID");
                 });
 
             migrationBuilder.CreateIndex(
