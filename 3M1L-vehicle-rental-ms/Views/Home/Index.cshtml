@@ -2,6 +2,20 @@
 	Layout = "~/Views/Shared/_Layout.cshtml";
 	ViewData["title"] = "Home";
 }
-
+<div class="text-center">
 <h1>Welcome to team 3M1L's Vehicle Rrental Management System</h1>
 
+
+	<p><a asp-controller="Vehicle" asp-action="Index">Display Vehicles</a></p>
+	<p><a asp-controller="Vehicle" asp-action="Search">Search for a Vehicle</a></p>
+
+	<p><a asp-controller="Customer" asp-action="Index">Display Customers</a></p>
+	<p><a asp-controller="Customer" asp-action="Search">Search for a Customer</a></p>
+
+	<p><a asp-controller="Reservation" asp-action="Index">Display Reservations</a></p>
+	<p><a asp-controller="Reservation" asp-action="Search">Search for a Reservation</a></p>
+
+	<p><a asp-controller="Reports" asp-action="Index">Display Resports</a></p>
+	<p><a asp-controller="Reports" asp-action="Search">Search for a Report</a></p>
+
+</div>
