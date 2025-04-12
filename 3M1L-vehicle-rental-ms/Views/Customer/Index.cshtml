@@ -1,31 +1,25 @@
-﻿@* @model List<Vehicle>
-@{
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	ViewData["title"] = "All jokes";
-}
+﻿@model IEnumerable<_3M1L_vehicle_rental_ms.Models.Customer>
 
-<h1>All jokes:</h1>
-@if(Model != null && Model.Count()>0)
-{
-	<table>
-		<thead>
-			<tr>
-				<th>Question</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var joke in Model)
-			{
-				<tr>
-					<td>@joke.JokeQuestion</td>
-					<td><a asp-controller ="Joke" asp-action ="Details" asp-route-id="@joke.Id">Answer</a></td>
-					<td><a asp-controller ="Joke" asp-action="Edit" asp-route-id="@joke.Id">Edit</a></td>
-					<td><a asp-controller ="Joke" asp-action="Delete" asp-route-id="@joke.Id">Delete</a></td>
-				</tr>
-			}
-
-		</tbody>
-	</table>
-}
-<a asp-controller="Joke" asp-action="Add">Add</a>
- *@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.JokeQuestion</td>
+                <td>@customer.JokeAnswer</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@customer.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@customer.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create">Add New Customer</a>
