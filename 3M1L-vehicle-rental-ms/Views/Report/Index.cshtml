@@ -1,31 +1,53 @@
-﻿@* @model List<Vehicle>
+﻿@model IEnumerable<_3M1LVehicleRentalsMs.Models.Reports>
+
 @{
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	ViewData["title"] = "All jokes";
+    ViewData["Title"] = "Report";
 }
 
-<h1>All jokes:</h1>
-@if(Model != null && Model.Count()>0)
-{
-	<table>
-		<thead>
-			<tr>
-				<th>Question</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var joke in Model)
-			{
-				<tr>
-					<td>@joke.JokeQuestion</td>
-					<td><a asp-controller ="Joke" asp-action ="Details" asp-route-id="@joke.Id">Answer</a></td>
-					<td><a asp-controller ="Joke" asp-action="Edit" asp-route-id="@joke.Id">Edit</a></td>
-					<td><a asp-controller ="Joke" asp-action="Delete" asp-route-id="@joke.Id">Delete</a></td>
-				</tr>
-			}
+<h1>Reports</h1>
 
-		</tbody>
-	</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Admin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reservation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Admin.AdminEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reservation.ReservationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle.VehicleManufacturer)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.ReportId" class="btn btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ReportId" class="btn btn-warning">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ReportId" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
 }
-<a asp-controller="Joke" asp-action="Add">Add</a>
- *@
+    </tbody>
+</table>

@@ -1,112 +1,157 @@
-﻿using _3M1L_vehicle_rental_ms.Models;
-using _3M1L_vehicle_rental_ms.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using _3M1LVehicleRentalsMs.Data;
+using _3M1LVehicleRentalsMs.Models;
 
-namespace _3M1L_vehicle_rental_ms.Controllers
+namespace _3M1LVehicleRentalsMs.Controllers
 {
     public class VehicleController : Controller
     {
-        private readonly RentalDbContext rentalDbContext;
+        private readonly VehicleDbContext _context;
 
-
-        public VehicleController(RentalDbContext rentalDbContext)
+        public VehicleController(VehicleDbContext context)
         {
-            this.rentalDbContext = rentalDbContext;
+            _context = context;
         }
 
-        // Get all Vehicles
-        [HttpGet]
-        [Route("Vehicle")]
+        // GET: Vehicle
         public async Task<IActionResult> Index()
         {
-            var Vehicles = await rentalDbContext.Vehicles.ToListAsync();
-            return View(Vehicles);
+            return View(await _context.Vehicle.ToListAsync());
         }
 
-        // Get one vehicle
-        [HttpGet]
-        [Route("Vehicle/Details/{id}")]
-        public async Task<IActionResult> Details(int id)
+        // GET: Vehicle/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            var vehicle = await rentalDbContext.Vehicles.FirstOrDefaultAsync(a => a.VehicleID == id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var vehicle = await _context.Vehicle
+                .FirstOrDefaultAsync(m => m.VehicleID == id);
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
             return View(vehicle);
         }
 
-        // Get the Add.cshtml page
-        [HttpGet]
-        [Route("Vehicle/Add")]
-        public IActionResult Add()
+        // GET: Vehicle/Create
+        public IActionResult Create()
         {
             return View();
         }
 
-        // Create a new vehicle
+        // POST: Vehicle/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Vehicle/Add")]
-        public async Task<IActionResult> Add(Vehicle vehicle)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("VehicleID,VehicleManufacturer,VehicleModel,VehicleYear,VehicleAvailability,VehicleStatus")] Vehicle vehicle)
         {
             if (ModelState.IsValid)
             {
-                var newvehicle = new Vehicle()
-                {
-                    VehicleManufacturer= vehicle.VehicleManufacturer,
-                    VehicleModel = vehicle.VehicleModel,
-                    VehicleYear = vehicle.VehicleYear,
-                    VehicleAvailability = vehicle.VehicleAvailability,
-                    VehicleStatus = vehicle.VehicleStatus,
-                };
-                await rentalDbContext.Vehicles.AddAsync(newvehicle);
-                await rentalDbContext.SaveChangesAsync();
-                return RedirectToAction("Index");
+                _context.Add(vehicle);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
             return View(vehicle);
         }
 
-        // Get Edit.cshtml page
-        [HttpGet]
-        [Route("Vehicle/Edit/{id}")]
-        public async Task<IActionResult> Edit(int id)
+        // GET: Vehicle/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            var vehicle = await rentalDbContext.Vehicles.FirstOrDefaultAsync(a => a.VehicleID == id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var vehicle = await _context.Vehicle.FindAsync(id);
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
             return View(vehicle);
         }
-        
-        // Edit one vehicle
+
+        // POST: Vehicle/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Route("Vehicle/Edit/{id}")]
-        public async Task<IActionResult> Edit(Vehicle NewVehicle)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("VehicleID,VehicleManufacturer,VehicleModel,VehicleYear,VehicleAvailability,VehicleStatus")] Vehicle vehicle)
         {
+            if (id != vehicle.VehicleID)
+            {
+                return NotFound();
+            }
+
             if (ModelState.IsValid)
             {
-                var vehicle = await rentalDbContext.Vehicles.FindAsync(NewVehicle.VehicleID);
-                if (vehicle != null)
+                try
                 {
-                    vehicle.VehicleManufacturer = NewVehicle.VehicleManufacturer;
-                    vehicle.VehicleModel = NewVehicle.VehicleModel;
-                    vehicle.VehicleYear = NewVehicle.VehicleYear;
-                    vehicle.VehicleAvailability = NewVehicle.VehicleAvailability;
-                    vehicle.VehicleStatus = NewVehicle.VehicleStatus;
-                    await rentalDbContext.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                    _context.Update(vehicle);
+                    await _context.SaveChangesAsync();
                 }
-                
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!VehicleExists(vehicle.VehicleID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
             }
-            return View(NewVehicle);
+            return View(vehicle);
         }
 
-        // Delete
-        [HttpGet]
-        [Route("Vehicle/Delete/{id}")]
-        public async Task<IActionResult> Delete(int id)
+        // GET: Vehicle/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            var vehicle = await rentalDbContext.Vehicles.FindAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var vehicle = await _context.Vehicle
+                .FirstOrDefaultAsync(m => m.VehicleID == id);
+            if (vehicle == null)
+            {
+                return NotFound();
+            }
+
+            return View(vehicle);
+        }
+
+        // POST: Vehicle/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var vehicle = await _context.Vehicle.FindAsync(id);
             if (vehicle != null)
             {
-                rentalDbContext.Vehicles.Remove(vehicle);
-                await rentalDbContext.SaveChangesAsync();
+                _context.Vehicle.Remove(vehicle);
             }
-            return RedirectToAction("Index");
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool VehicleExists(int id)
+        {
+            return _context.Vehicle.Any(e => e.VehicleID == id);
         }
     }
 }

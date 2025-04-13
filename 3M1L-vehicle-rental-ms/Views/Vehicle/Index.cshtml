@@ -1,38 +1,59 @@
-﻿@model List<Vehicle>
+﻿@model IEnumerable<_3M1LVehicleRentalsMs.Models.Vehicle>
+
 @{
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	ViewData["title"] = "All vehicles";
+    ViewData["Title"] = "Vehicle";
 }
 
-<h1>All vehicles:</h1>
-<a asp-controller="Vehicle" asp-action="Add">Add Vehicle</a>
-@if(Model != null && Model.Count()>0)
-{
-	<table>
-		<thead>
-			<tr>
-				<th>Manufacturer</th>
-				<th>Model</th>
-				<th>Year</th>
-				<th>Availability</th>
-				<th>Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var vehicle in Model)
-			{
-				<tr>
-					<td>@vehicle.VehicleManufacturer</td>
-					<td>@vehicle.VehicleModel</td>
-					<td>@vehicle.VehicleYear</td>
-					<td>@vehicle.VehicleAvailability</td>
-					<td>@vehicle.VehicleStatus</td>
-					<td><a asp-controller="Vehicle" asp-action="Details" asp-route-id="@vehicle.VehicleID">Details</a></td>
-					<td><a asp-controller ="Vehicle" asp-action="Edit" asp-route-id="@vehicle.VehicleID">Edit</a></td>
-					<td><a asp-controller="Vehicle" asp-action="Delete" asp-route-id="@vehicle.VehicleID">Delete</a></td>
-				</tr>
-			}
+<h1>Vehicles</h1>
 
-		</tbody>
-	</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleManufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleModel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleAvailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleManufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleModel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleAvailability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleStatus)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.VehicleID" class="btn btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.VehicleID" class="btn btn-warning">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.VehicleID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
 }
+    </tbody>
+</table>

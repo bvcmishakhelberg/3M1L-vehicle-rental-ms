@@ -1,31 +1,59 @@
-﻿@* @model List<Vehicle>
+﻿@model IEnumerable<_3M1LVehicleRentalsMs.Models.Customer>
+
 @{
-	Layout = "~/Views/Shared/_Layout.cshtml";
-	ViewData["title"] = "All jokes";
+    ViewData["Title"] = "Customer";
 }
 
-<h1>All jokes:</h1>
-@if(Model != null && Model.Count()>0)
-{
-	<table>
-		<thead>
-			<tr>
-				<th>Question</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach (var joke in Model)
-			{
-				<tr>
-					<td>@joke.JokeQuestion</td>
-					<td><a asp-controller ="Joke" asp-action ="Details" asp-route-id="@joke.Id">Answer</a></td>
-					<td><a asp-controller ="Joke" asp-action="Edit" asp-route-id="@joke.Id">Edit</a></td>
-					<td><a asp-controller ="Joke" asp-action="Delete" asp-route-id="@joke.Id">Delete</a></td>
-				</tr>
-			}
+<h1>Customers</h1>
 
-		</tbody>
-	</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.CustomerID" class="btn btn-info">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.CustomerID" class="btn btn-warning">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CustomerID" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
 }
-<a asp-controller="Joke" asp-action="Add">Add</a>
- *@
+    </tbody>
+</table>
