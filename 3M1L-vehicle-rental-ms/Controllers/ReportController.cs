@@ -17,7 +17,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         // GET: Reports
         [HttpGet]
-        [Route("Reports")]
+        [Route("Report")]
         public async Task<IActionResult> Index()
         {
             return View(await reportDbContext.Reports.ToListAsync());
@@ -25,7 +25,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         // GET: Reports/Details/5
         [HttpGet]
-        [Route("Reports/Details/{id}")]
+        [Route("Report/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,7 +45,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         // GET: Reports/Create
         [HttpGet]
-        [Route("Reports/Create")]
+        [Route("Report/Create")]
         public IActionResult Create()
         {
             return View();
@@ -54,7 +54,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
         // POST: Reports/Create
 
         [HttpPost]
-        [Route("Reports/Create")]
+        [Route("Report/Create")]
         public async Task<IActionResult> Create([Bind("ReportId")] Reports reports)
         {
             if (ModelState.IsValid)
@@ -68,7 +68,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         // GET: Reports/Edit/5
         [HttpGet]
-        [Route("Reports/Edit/{id}")]
+        [Route("Report/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,7 +86,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         // POST: Reports/Edit/5
         [HttpPost]
-        [Route("Reports/Edit/{id}")]
+        [Route("Report/Edit/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("ReportId")] Reports reports)
         {
             if (id != reports.ReportId)
@@ -119,7 +119,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
         // GET: Reports/Delete/5
         [HttpGet]
-        [Route("Reports/Delete/{id}")]
+        [Route("Report/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
