@@ -28,6 +28,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         // POST: /Customer/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Customer model)
         {
             if (ModelState.IsValid)
@@ -49,6 +50,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         // POST: /Customer/Edit/{id}
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Customer model)
         {
             if (ModelState.IsValid)
@@ -70,6 +72,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         // POST: /Customer/Delete/{id}
         [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var customer = _context.Customers.Find(id);

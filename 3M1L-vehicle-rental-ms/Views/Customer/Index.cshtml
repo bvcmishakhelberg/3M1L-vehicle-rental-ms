@@ -1,10 +1,15 @@
 ﻿@model IEnumerable<_3M1L_vehicle_rental_ms.Models.Customer>
 
-<table>
+<h1>Customer List</h1>
+<a asp-action="Create" class="btn btn-primary">Add New Customer</a>
+<table class="table">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
             <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -12,14 +17,16 @@
         @foreach (var customer in Model)
         {
             <tr>
-                <td>@customer.JokeQuestion</td>
-                <td>@customer.JokeAnswer</td>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.PhoneNumber</td>
+                <td>@customer.Address</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@customer.Id">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@customer.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-action="Create">Add New Customer</a>
