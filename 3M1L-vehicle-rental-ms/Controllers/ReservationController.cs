@@ -12,20 +12,26 @@ namespace _3M1LVehicleRentalsMs.Controllers
 {
     public class ReservationController : Controller
     {
-        private readonly ReservationDbContext _context;
+        private readonly ReservationDbContext _reservationDbContext;
 
-        public ReservationController(ReservationDbContext context)
+        public ReservationController(ReservationDbContext reservationDbContext)
         {
-            _context = context;
+            _reservationDbContext = reservationDbContext;
         }
 
         // GET: Reservation
+        [HttpGet]
+        [Route("Reservation")]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Reservation.ToListAsync());
+            var reservations = await _reservationDbContext.Reservation.ToListAsync();
+            return View(reservations);
+
         }
 
         // GET: Reservation/Details/5
+        [HttpGet]
+        [Route("Reservation/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,7 +39,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservation
+            var reservation = await _reservationDbContext.Reservation
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -44,28 +50,30 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // GET: Reservation/Create
+        [HttpGet]
+        [Route("Reservation/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Reservation/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Reservation/Create")]
         public async Task<IActionResult> Create([Bind("ReservationId,ReservationDate,ReservationCost")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reservation);
-                await _context.SaveChangesAsync();
+                _reservationDbContext.Add(reservation);
+                await _reservationDbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(reservation);
         }
 
         // GET: Reservation/Edit/5
+        [HttpGet]
+        [Route("Reservation/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,7 +81,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservation.FindAsync(id);
+            var reservation = await _reservationDbContext.Reservation.FindAsync(id);
             if (reservation == null)
             {
                 return NotFound();
@@ -82,10 +90,9 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // POST: Reservation/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Reservation/Edit/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("ReservationId,ReservationDate,ReservationCost")] Reservation reservation)
         {
             if (id != reservation.ReservationId)
@@ -97,8 +104,8 @@ namespace _3M1LVehicleRentalsMs.Controllers
             {
                 try
                 {
-                    _context.Update(reservation);
-                    await _context.SaveChangesAsync();
+                    _reservationDbContext.Update(reservation);
+                    await _reservationDbContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -117,6 +124,8 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // GET: Reservation/Delete/5
+        [HttpGet]
+        [Route("Reservation/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,7 +133,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reservation = await _context.Reservation
+            var reservation = await _reservationDbContext.Reservation
                 .FirstOrDefaultAsync(m => m.ReservationId == id);
             if (reservation == null)
             {
@@ -134,24 +143,9 @@ namespace _3M1LVehicleRentalsMs.Controllers
             return View(reservation);
         }
 
-        // POST: Reservation/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reservation = await _context.Reservation.FindAsync(id);
-            if (reservation != null)
-            {
-                _context.Reservation.Remove(reservation);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
         private bool ReservationExists(int id)
         {
-            return _context.Reservation.Any(e => e.ReservationId == id);
+            return _reservationDbContext.Reservation.Any(e => e.ReservationId == id);
         }
     }
 }

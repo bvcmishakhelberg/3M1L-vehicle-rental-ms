@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _3M1LVehicleRentalsMs.Data;
@@ -10,23 +6,26 @@ using _3M1LVehicleRentalsMs.Models;
 
 namespace _3M1LVehicleRentalsMs.Controllers
 {
-    public class ReportController : Controller
+    public class ReportsController : Controller
     {
-        private readonly ReportDbContext _context;
+        private readonly ReportDbContext reportDbContext;
 
-        public ReportController(ReportDbContext context)
+        public ReportsController(ReportDbContext reportDbContext)
         {
-            _context = context;
+            this.reportDbContext = reportDbContext;
         }
 
-        // GET: Report
+        // GET: Reports
+        [HttpGet]
+        [Route("Reports")]
         public async Task<IActionResult> Index()
         {
-            var reportDbContext = _context.Reports.Include(r => r.Admin).Include(r => r.Customer).Include(r => r.Reservation).Include(r => r.Vehicle);
-            return View(await reportDbContext.ToListAsync());
+            return View(await reportDbContext.Reports.ToListAsync());
         }
 
-        // GET: Report/Details/5
+        // GET: Reports/Details/5
+        [HttpGet]
+        [Route("Reports/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -34,11 +33,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reports = await _context.Reports
-                .Include(r => r.Admin)
-                .Include(r => r.Customer)
-                .Include(r => r.Reservation)
-                .Include(r => r.Vehicle)
+            var reports = await reportDbContext.Reports
                 .FirstOrDefaultAsync(m => m.ReportId == id);
             if (reports == null)
             {
@@ -48,37 +43,32 @@ namespace _3M1LVehicleRentalsMs.Controllers
             return View(reports);
         }
 
-        // GET: Report/Create
+        // GET: Reports/Create
+        [HttpGet]
+        [Route("Reports/Create")]
         public IActionResult Create()
         {
-            ViewData["AdminID"] = new SelectList(_context.Set<Admin>(), "AdminID", "AdminEmail");
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "CustomerAddress");
-            ViewData["ReservationId"] = new SelectList(_context.Set<Reservation>(), "ReservationId", "ReservationId");
-            ViewData["VehicleID"] = new SelectList(_context.Set<Vehicle>(), "VehicleID", "VehicleManufacturer");
             return View();
         }
 
-        // POST: Report/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Reports/Create
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReportId,AdminID,CustomerID,ReservationId,VehicleID")] Reports reports)
+        [Route("Reports/Create")]
+        public async Task<IActionResult> Create([Bind("ReportId")] Reports reports)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(reports);
-                await _context.SaveChangesAsync();
+                reportDbContext.Add(reports);
+                await reportDbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AdminID"] = new SelectList(_context.Set<Admin>(), "AdminID", "AdminEmail", reports.AdminID);
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "CustomerAddress", reports.CustomerID);
-            ViewData["ReservationId"] = new SelectList(_context.Set<Reservation>(), "ReservationId", "ReservationId", reports.ReservationId);
-            ViewData["VehicleID"] = new SelectList(_context.Set<Vehicle>(), "VehicleID", "VehicleManufacturer", reports.VehicleID);
             return View(reports);
         }
 
-        // GET: Report/Edit/5
+        // GET: Reports/Edit/5
+        [HttpGet]
+        [Route("Reports/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,24 +76,18 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reports = await _context.Reports.FindAsync(id);
+            var reports = await reportDbContext.Reports.FindAsync(id);
             if (reports == null)
             {
                 return NotFound();
             }
-            ViewData["AdminID"] = new SelectList(_context.Set<Admin>(), "AdminID", "AdminEmail", reports.AdminID);
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "CustomerAddress", reports.CustomerID);
-            ViewData["ReservationId"] = new SelectList(_context.Set<Reservation>(), "ReservationId", "ReservationId", reports.ReservationId);
-            ViewData["VehicleID"] = new SelectList(_context.Set<Vehicle>(), "VehicleID", "VehicleManufacturer", reports.VehicleID);
             return View(reports);
         }
 
-        // POST: Report/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Reports/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReportId,AdminID,CustomerID,ReservationId,VehicleID")] Reports reports)
+        [Route("Reports/Edit/{id}")]
+        public async Task<IActionResult> Edit(int id, [Bind("ReportId")] Reports reports)
         {
             if (id != reports.ReportId)
             {
@@ -114,8 +98,8 @@ namespace _3M1LVehicleRentalsMs.Controllers
             {
                 try
                 {
-                    _context.Update(reports);
-                    await _context.SaveChangesAsync();
+                    reportDbContext.Update(reports);
+                    await reportDbContext.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -130,14 +114,12 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AdminID"] = new SelectList(_context.Set<Admin>(), "AdminID", "AdminEmail", reports.AdminID);
-            ViewData["CustomerID"] = new SelectList(_context.Set<Customer>(), "CustomerID", "CustomerAddress", reports.CustomerID);
-            ViewData["ReservationId"] = new SelectList(_context.Set<Reservation>(), "ReservationId", "ReservationId", reports.ReservationId);
-            ViewData["VehicleID"] = new SelectList(_context.Set<Vehicle>(), "VehicleID", "VehicleManufacturer", reports.VehicleID);
             return View(reports);
         }
 
-        // GET: Report/Delete/5
+        // GET: Reports/Delete/5
+        [HttpGet]
+        [Route("Reports/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,11 +127,7 @@ namespace _3M1LVehicleRentalsMs.Controllers
                 return NotFound();
             }
 
-            var reports = await _context.Reports
-                .Include(r => r.Admin)
-                .Include(r => r.Customer)
-                .Include(r => r.Reservation)
-                .Include(r => r.Vehicle)
+            var reports = await reportDbContext.Reports
                 .FirstOrDefaultAsync(m => m.ReportId == id);
             if (reports == null)
             {
@@ -158,25 +136,9 @@ namespace _3M1LVehicleRentalsMs.Controllers
 
             return View(reports);
         }
-
-        // POST: Report/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reports = await _context.Reports.FindAsync(id);
-            if (reports != null)
-            {
-                _context.Reports.Remove(reports);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
         private bool ReportsExists(int id)
         {
-            return _context.Reports.Any(e => e.ReportId == id);
+            return reportDbContext.Reports.Any(e => e.ReportId == id);
         }
     }
 }
