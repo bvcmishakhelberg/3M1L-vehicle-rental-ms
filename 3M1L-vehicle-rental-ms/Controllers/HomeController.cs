@@ -1,32 +1,34 @@
-using System.Diagnostics;
+using _3M1LVehicleRentalsMs.Data;
 using _3M1LVehicleRentalsMs.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace _3M1LVehicleRentalsMs.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly CustomerDbContext _customerContext;
+        private readonly VehicleDbContext _vehicleContext;
+        private readonly ReservationDbContext _reservationContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(CustomerDbContext customerContext, VehicleDbContext vehicleContext, ReservationDbContext reservationContext)
         {
-            _logger = logger;
+            _customerContext = customerContext;
+            _vehicleContext = vehicleContext;
+            _reservationContext = reservationContext;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
+            var viewModel = new HomeViewModel
+            {
+                Customers = await _customerContext.Customers.ToListAsync(),
+                Vehicles = await _vehicleContext.Vehicle.ToListAsync(),
+                Reservations = await _reservationContext.Reservation.ToListAsync() 
+            };
 
-        //public IActionResult Privacy()
-        //{
-        //    return View();
-        //}
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(viewModel);
         }
     }
 }

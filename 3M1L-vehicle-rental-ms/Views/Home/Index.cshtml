@@ -1,14 +1,81 @@
-﻿    @model _3M1LVehicleRentalsMs.Models.Customer
+﻿@model _3M1LVehicleRentalsMs.Models.HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
-
 }
 
 <div class="text-center">
-    <h1 class="display-4">Vehicle Rental</h1>
- @*    @await Html.PartialAsync("~/Views/Vehicle/Details.cshtml"); *@
-	@* @await Html.PartialAsync("~/Views/Reservation/Details.cshtml") *@
-	@await Html.PartialAsync("~/Views/Shared/_CustomerDetailsPartial.cshtml");
-   
+    <h1 class="display-4">Vehicle Rental Dashboard</h1>
+</div>
+
+<div>
+    <h2>Vehicles</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Vehicle Name</th>
+                <th>Type</th>
+                <th>License Plate</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model.Vehicles)
+            {
+                <tr>
+                    <td>@vehicle.VehicleManufacturer</td>
+                    <td>@vehicle.VehicleModel</td>
+                    <td>@vehicle.VehicleYear</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <h2>Reservations</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Customer</th>
+                <th>Vehicle</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model.Reservations)
+            {
+                <tr>
+                    <td>@reservation.ReservationId</td>
+                    <td>@reservation.CustomerInfo.CustomerName</td>
+                    <td>@reservation.VehicleInfo.VehicleID</td>
+                    <td>@reservation.ReservationDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <h2>Customers</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Customer Type</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customers in Model.Customers)
+                {
+                    <tr>
+                        <td>@customers.CustomerID</td>
+                        <td>@customers.CustomerName</td>
+                        <td>@customers.CustomerType</td>
+                        <td>@customers.PhoneNumber</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 </div>
