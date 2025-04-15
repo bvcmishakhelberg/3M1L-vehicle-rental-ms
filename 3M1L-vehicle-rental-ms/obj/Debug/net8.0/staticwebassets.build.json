@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TUs/nrWLK+R9NncWYMW8HR75u3BctcYXdwVeVanXZr0=",
+  "Hash": "AYmQX9rwpOUGLymMJHkiGALv7frBZ46r3Bo/sgynSpE=",
   "Source": "3M1LVehiclRentalMs",
   "BasePath": "_content/3M1LVehiclRentalMs",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "qa4m8ndfcc",
-      "Integrity": "QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=",
+      "Fingerprint": "11fujxjyc2",
+      "Integrity": "lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1506,6 +1506,51 @@
       ]
     },
     {
+      "Route": "css/site.11fujxjyc2.css",
+      "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "998"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 18:48:59 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "11fujxjyc2"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA="
+        }
+      ]
+    },
+    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1516,7 +1561,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "705"
+          "Value": "998"
         },
         {
           "Name": "Content-Type",
@@ -1524,11 +1569,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=\""
+          "Value": "\"lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 15 Apr 2025 18:14:05 GMT"
+          "Value": "Tue, 15 Apr 2025 18:48:59 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1538,52 +1583,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.qa4m8ndfcc.css",
-      "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "705"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Tue, 15 Apr 2025 18:14:05 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "qa4m8ndfcc"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI="
+          "Value": "sha256-lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA="
         }
       ]
     },

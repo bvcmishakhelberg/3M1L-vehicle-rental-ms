@@ -12,17 +12,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"y2hp6kmy2p"},{"Name":"integrity","Value":"sha256-RmfJMX4ibjfUFBBR69eivZmzQnUXNu1LxMfJ5hfkkPU="},{"Name":"label","Value":"_content/3M1LVehiclRentalMs/3M1LVehiclRentalMs.bundle.scp.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1136"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RmfJMX4ibjfUFBBR69eivZmzQnUXNu1LxMfJ5hfkkPU=\u0022"},{"Name":"Last-Modified","Value":"Sat, 12 Apr 2025 23:35:42 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/3M1LVehiclRentalMs/css/site.11fujxjyc2.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"11fujxjyc2"},{"Name":"integrity","Value":"sha256-lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA="},{"Name":"label","Value":"_content/3M1LVehiclRentalMs/css/site.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"998"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 18:48:59 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/3M1LVehiclRentalMs/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"705"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 18:14:05 GMT"}]]]></ResponseHeaders>
-    </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/3M1LVehiclRentalMs/css/site.qa4m8ndfcc.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
-      <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"qa4m8ndfcc"},{"Name":"integrity","Value":"sha256-QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI="},{"Name":"label","Value":"_content/3M1LVehiclRentalMs/css/site.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"705"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 18:14:05 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"998"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022lW7CH7mPz4kSmsMdNBpuWQEHu6puaLt/1WmUYCl8pIA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 15 Apr 2025 18:48:59 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/3M1LVehiclRentalMs/favicon.61n19gt1b8.ico">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</AssetFile>

@@ -18,21 +18,38 @@ html {
 }
 
 body {
+  margin:0 15px;
   margin-bottom: 60px;
 }
 
 .header-image {
     background-image: url('/images/image_car.png');
     background-size: contain;
-    background-repeat:no-repeat;
-    width:auto;
-    height: 600px;
-
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    width: auto;
+    height: 400px;
 }
-
     .header-image h1 {
         background-color: rgb(255, 255, 255, 0.5);
         margin: auto;
         font-weight:500;
         color:darkslategray;
+    }
+
+
+    th, td{
+        min-width:150px;
+    }
+
+    .flex-row{
+        display:flex;
+        justify-content:center;
+    }
+
+    .flex-column{
+        display:flex;
+        flex-direction:column;
+        
     }

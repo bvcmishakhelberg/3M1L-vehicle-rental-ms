@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("3M1LVehiclRentalMs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bb07d45e44cd4f79bad031b5ccf4574181f4ca78")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0cfce06b0dc4a0d8fd2dadab0df84f58f8c92e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("3M1LVehiclRentalMs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("3M1LVehiclRentalMs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
