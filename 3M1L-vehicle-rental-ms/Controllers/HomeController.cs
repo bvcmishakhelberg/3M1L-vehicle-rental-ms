@@ -21,10 +21,10 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         }
 
 
-        //[Route("/")]
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+        [Route("/")]
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

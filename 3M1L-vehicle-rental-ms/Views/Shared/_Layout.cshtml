@@ -12,6 +12,8 @@
             <a asp-controller="Home" asp-action="Index">Home</a>
             <a asp-controller="Vehicle" asp-action="Index">Vehicles</a>
             <a asp-controller="Customer" asp-action="Index">Customers</a>
+            <a asp-controller="Reservation" asp-action="Index">Customers</a>
+            <a asp-controller="Report" asp-action="Index">Customers</a>
         </div>
         <div class="flex-row">
             <a asp-controller="Account" asp-action="Login">Login</a>
@@ -19,8 +21,6 @@
         </div>
     </nav>
 
-    @* <a asp-controller="Customer" asp-action="Index">Customers</a>
-    <a asp-controller="Report" asp-action="Index">Reports</a> *@
     <div>
         @RenderBody()
     </div>
