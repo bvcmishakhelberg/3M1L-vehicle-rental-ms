@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\images\\image_car.png",
+      "PackagePath": "staticwebassets\\images\\image_car.png"
+    },
+    {
       "Id": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

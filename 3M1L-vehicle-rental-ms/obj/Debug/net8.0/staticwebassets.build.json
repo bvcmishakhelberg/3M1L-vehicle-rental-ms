@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DH/pthsGMESkuJenV8keeuGU0kdfNH6g6H84rkk2N7s=",
+  "Hash": "TUs/nrWLK+R9NncWYMW8HR75u3BctcYXdwVeVanXZr0=",
   "Source": "3M1LVehiclRentalMs",
   "BasePath": "_content/3M1LVehiclRentalMs",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "c2tiyv64ts",
-      "Integrity": "pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=",
+      "Fingerprint": "qa4m8ndfcc",
+      "Integrity": "QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -99,6 +99,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\images\\image_car.png",
+      "SourceId": "3M1LVehiclRentalMs",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\",
+      "BasePath": "_content/3M1LVehiclRentalMs",
+      "RelativePath": "images/image_car#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3p8y9fwbi1",
+      "Integrity": "eZpsUgjYYsr+BgWLYWZQ4ualwS092MyVaOCNR9Blr+k=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\image_car.png"
     },
     {
       "Identity": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\js\\site.js",
@@ -1485,51 +1506,6 @@
       ]
     },
     {
-      "Route": "css/site.c2tiyv64ts.css",
-      "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "362"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 12 Apr 2025 22:07:54 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "c2tiyv64ts"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1540,7 +1516,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "362"
+          "Value": "705"
         },
         {
           "Name": "Content-Type",
@@ -1548,11 +1524,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0=\""
+          "Value": "\"QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 12 Apr 2025 22:07:54 GMT"
+          "Value": "Tue, 15 Apr 2025 18:14:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1562,7 +1538,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+          "Value": "sha256-QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.qa4m8ndfcc.css",
+      "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "705"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 18:14:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qa4m8ndfcc"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QhNXaXZHaNkEUKZXJtSDzvzIuTDphroTHBVBEOhuEuI="
         }
       ]
     },
@@ -1645,6 +1666,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/image_car.3p8y9fwbi1.png",
+      "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\images\\image_car.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "377593"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eZpsUgjYYsr+BgWLYWZQ4ualwS092MyVaOCNR9Blr+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 17:57:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3p8y9fwbi1"
+        },
+        {
+          "Name": "label",
+          "Value": "images/image_car.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-eZpsUgjYYsr+BgWLYWZQ4ualwS092MyVaOCNR9Blr+k="
+        }
+      ]
+    },
+    {
+      "Route": "images/image_car.png",
+      "AssetFile": "C:\\Documents\\AspProject\\3M1L-vehicle-rental-ms\\wwwroot\\images\\image_car.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "377593"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eZpsUgjYYsr+BgWLYWZQ4ualwS092MyVaOCNR9Blr+k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 15 Apr 2025 17:57:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-eZpsUgjYYsr+BgWLYWZQ4ualwS092MyVaOCNR9Blr+k="
         }
       ]
     },
