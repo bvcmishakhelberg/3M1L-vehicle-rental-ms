@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj": {}
+    "C:\\Documents\\AspProject2\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj": {}
   },
   "projects": {
-    "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj": {
+    "C:\\Documents\\AspProject2\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
+        "projectUniqueName": "C:\\Documents\\AspProject2\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
         "projectName": "3M1L-vehicle-rental-ms",
-        "projectPath": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
-        "packagesPath": "C:\\Users\\marka\\.nuget\\packages\\",
-        "outputPath": "C:\\Programming\\School\\second-term\\asp-dotnet\\VehicleRentalMS\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms\\obj\\",
+        "projectPath": "C:\\Documents\\AspProject2\\3M1L-vehicle-rental-ms\\3M1L-vehicle-rental-ms.csproj",
+        "packagesPath": "C:\\Users\\LeiDi\\.nuget\\packages\\",
+        "outputPath": "C:\\Documents\\AspProject2\\3M1L-vehicle-rental-ms\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\marka\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LeiDi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,6 +51,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "MathNet.Numerics": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -90,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

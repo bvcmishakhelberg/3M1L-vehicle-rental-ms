@@ -1,106 +1,143 @@
-﻿//using _3M1L_vehicle_rental_ms.Models;
-//using _3M1L_vehicle_rental_ms.Data;
-//using Microsoft.AspNetCore.Mvc;
-//using Microsoft.EntityFrameworkCore;
+﻿using _3M1L_vehicle_rental_ms.Models;
+using _3M1L_vehicle_rental_ms.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-//namespace _3M1L_vehicle_rental_ms.Controllers
-//{
-//    public class ReportController : Controller
-//    {
-//        private readonly RentalDbContext RentalDbContext;
+namespace _3M1L_vehicle_rental_ms.Controllers
+{
+    public class ReportsController : Controller
+    {
+        private readonly RentalDbContext reportDbContext;
 
+        public ReportsController(RentalDbContext reportDbContext)
+        {
+            this.reportDbContext = reportDbContext;
+        }
 
-//        public ReportController(RentalDbContext RentalDbContext)
-//        {
-//            this.RentalDbContext = RentalDbContext;
-//        }
+        // GET: Reports
+        [HttpGet]
+        [Route("Report")]
+        public async Task<IActionResult> Index()
+        {
+            return View(await reportDbContext.Reports.ToListAsync());
+        }
 
-//        // Get all jokes
-//        [HttpGet]
-//        [Route("Joke")]
-//        public async Task<IActionResult> Index()
-//        {
-//            var jokes = await RentalDbContext.Jokes.ToListAsync();
-//            return View(jokes);
-//        }
+        // GET: Reports/Details/5
+        [HttpGet]
+        [Route("Report/Details/{id}")]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-//        // Get one joke
-//        [HttpGet]
-//        [Route("Joke/Details/{id}")]
-//        public async Task<IActionResult> Details(int id)
-//        {
-//            var joke = await RentalDbContext.Jokes.FirstOrDefaultAsync(a => a.Id == id);
-//            return View(joke);
-//        }
+            var reports = await reportDbContext.Reports
+                .FirstOrDefaultAsync(m => m.ReportId == id);
+            if (reports == null)
+            {
+                return NotFound();
+            }
 
-//        // Get the Add.cshtml page
-//        [HttpGet]
-//        [Route("Joke/Add")]
-//        public IActionResult Add()
-//        {
-//            return View();
-//        }
+            return View(reports);
+        }
 
-//        // Create a new joke
-//        [HttpPost]
-//        [Route("Joke/Add")]
-//        public async Task<IActionResult> Add(Vehicle joke)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                var newjoke = new Vehicle()
-//                {
-//                    JokeQuestion = joke.JokeQuestion,
-//                    JokeAnswer = joke.JokeAnswer,
-//                };
-//                await RentalDbContext.Jokes.AddAsync(newjoke);
-//                await RentalDbContext.SaveChangesAsync();
-//                return RedirectToAction("Index");
-//            }
-//            return View(joke);
-//        }
+        // GET: Reports/Create
+        [HttpGet]
+        [Route("Report/Create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
 
-//        // Get Edit.cshtml page
-//        [HttpGet]
-//        [Route("Joke/Edit/{id}")]
-//        public async Task<IActionResult> Edit(int id)
-//        {
-//            var joke = await RentalDbContext.Jokes.FirstOrDefaultAsync(a => a.Id == id);
-//            return View(joke);
-//        }
-        
-//        // Edit one joke
-//        [HttpPost]
-//        [Route("Joke/Edit/{id}")]
-//        public async Task<IActionResult> Edit(Vehicle NewJoke)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                var joke = await RentalDbContext.Jokes.FindAsync(NewJoke.Id);
-//                if (joke != null)
-//                {
-//                    joke.JokeQuestion = NewJoke.JokeQuestion;
-//                    joke.JokeAnswer = NewJoke.JokeAnswer;
-//                    await RentalDbContext.SaveChangesAsync();
-//                    return RedirectToAction("Index");
-//                }
-                
-//            }
-//            return View(NewJoke);
-//        }
+        // POST: Reports/Create
 
-//        // Delete
-//        [HttpGet]
-//        [Route("Joke/Delete/{id}")]
-//        public async Task<IActionResult> Delete(int id)
-//        {
-//            var joke = await RentalDbContext.Jokes.FindAsync(id);
-//            if (joke != null)
-//            {
-//                RentalDbContext.Jokes.Remove(joke);
-//                await RentalDbContext.SaveChangesAsync();
-//            }
-//            return RedirectToAction("Index");
-//        }
-//    }
-//}
+        [HttpPost]
+        [Route("Report/Create")]
+        public async Task<IActionResult> Create([Bind("ReportId")] Report reports)
+        {
+            if (ModelState.IsValid)
+            {
+                reportDbContext.Add(reports);
+                await reportDbContext.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(reports);
+        }
+
+        // GET: Reports/Edit/5
+        [HttpGet]
+        [Route("Report/Edit/{id}")]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reports = await reportDbContext.Reports.FindAsync(id);
+            if (reports == null)
+            {
+                return NotFound();
+            }
+            return View(reports);
+        }
+
+        // POST: Reports/Edit/5
+        [HttpPost]
+        [Route("Report/Edit/{id}")]
+        public async Task<IActionResult> Edit(int id, [Bind("ReportId")] Report reports)
+        {
+            if (id != reports.ReportId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    reportDbContext.Update(reports);
+                    await reportDbContext.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ReportsExists(reports.ReportId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(reports);
+        }
+
+        // GET: Reports/Delete/5
+        [HttpGet]
+        [Route("Report/Delete/{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var reports = await reportDbContext.Reports
+                .FirstOrDefaultAsync(m => m.ReportId == id);
+            if (reports == null)
+            {
+                return NotFound();
+            }
+
+            return View(reports);
+        }
+        private bool ReportsExists(int id)
+        {
+            return reportDbContext.Reports.Any(e => e.ReportId == id);
+        }
+    }
+}
