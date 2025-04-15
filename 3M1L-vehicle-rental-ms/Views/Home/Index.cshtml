@@ -1,8 +1,14 @@
-﻿@{
+﻿    @model _3M1LVehicleRentalsMs.Models.Customer
+
+@{
     ViewData["Title"] = "Home Page";
+
 }
 
 <div class="text-center">
     <h1 class="display-4">Vehicle Rental</h1>
+ @*    @await Html.PartialAsync("~/Views/Vehicle/Details.cshtml"); *@
+	@* @await Html.PartialAsync("~/Views/Reservation/Details.cshtml") *@
+	@await Html.PartialAsync("~/Views/Shared/_CustomerDetailsPartial.cshtml");
    
 </div>

@@ -21,12 +21,16 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // GET: Admin
+        [HttpGet]
+        [Route("Admin")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Admins.ToListAsync());
         }
 
         // GET: Admin/Details/5
+        [HttpGet]
+        [Route("Admin/Details/{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,16 +49,16 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // GET: Admin/Create
+        [HttpGet]
+        [Route("Admin/Create")]
         public IActionResult Create()
         {
             return View();
         }
 
         // POST: Admin/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Admin/Create")]
         public async Task<IActionResult> Create([Bind("AdminID,AdminName,AdminEmail,AdminPhoneNumber")] Admin admin)
         {
             if (ModelState.IsValid)
@@ -67,6 +71,8 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // GET: Admin/Edit/5
+        [HttpGet]
+        [Route("Admin/Edit/{id}")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -83,10 +89,8 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // POST: Admin/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [Route("Admin/Edit/{id}")]
         public async Task<IActionResult> Edit(int id, [Bind("AdminID,AdminName,AdminEmail,AdminPhoneNumber")] Admin admin)
         {
             if (id != admin.AdminID)
@@ -118,6 +122,8 @@ namespace _3M1LVehicleRentalsMs.Controllers
         }
 
         // GET: Admin/Delete/5
+        [HttpGet]
+        [Route("Admin/Delete/{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -135,20 +141,6 @@ namespace _3M1LVehicleRentalsMs.Controllers
             return View(admin);
         }
 
-        // POST: Admin/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var admin = await _context.Admins.FindAsync(id);
-            if (admin != null)
-            {
-                _context.Admins.Remove(admin);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
 
         private bool AdminExists(int id)
         {
