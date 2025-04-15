@@ -12,15 +12,22 @@ namespace _3M1L_vehicle_rental_ms.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> IndexAsync()
-        {
-            var vehicles = await _context.Vehicles.ToListAsync();
-            var customers = await _context.Customers.ToListAsync();
-            var reservations = await _context.Reservations.ToListAsync();
-            return View(vehicles);
-        }
 
+        //[HttpGet]
+        //[Route("/")]
+        //public async Task<IActionResult> Index()
+        //{
 
+        //    var reports = await _context.Reports
+        //        .Include(r => r.Reservation)
+        //        .Include(r => r.Customer)
+        //        .Include(r => r.Vehicle)
+        //        .ToListAsync();
+
+        //    return View(reports);
+        //}
+
+        [HttpGet]
         [Route("/")]
         public IActionResult Index()
         {
