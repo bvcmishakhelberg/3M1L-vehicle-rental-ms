@@ -1,9 +1,85 @@
-﻿@{
+﻿@using _3M1L_vehicle_rental_ms.Models
+@model _3M1L_vehicle_rental_ms.Models.HomeViewModel
+
+@{
 	Layout = "~/Views/Shared/_Layout.cshtml";
 	ViewData["title"] = "Home";
 }
 
 
 <div class="text-center header-image">
-	<h1 class="display-4">Welcome to team 3M1L's Vehicle Rrental Management System</h1>
+	<h1 class="display-4 text-center">Welcome to team 3M1L's Vehicle Rental Management System</h1>
+</div>
+
+<div class="spaces">
+<h2>Customers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>@customer.FirstName @customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<div class="spaces">
+<h2>Vehicles</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Manufacturer</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vehicle in Model.Vehicles)
+        {
+            <tr>
+                <td>@vehicle.VehicleManufacturer</td>
+                <td>@vehicle.VehicleModel</td>
+                <td>@vehicle.VehicleYear</td>
+                <td>@vehicle.VehicleStatus</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<div class="spaces">
+<h2>Reservations</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Vehicle</th>
+            <th>Date</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model.Reservations)
+        {
+            <tr>
+                <td>@reservation.CustomerInfo.FirstName @reservation.CustomerInfo.LastName</td>
+                <td>@reservation.VehicleInfo.VehicleModel</td>
+                <td>@reservation.ReservationDate.ToShortDateString()</td>
+                <td>@reservation.ReservationCost</td>
+            </tr>
+        }
+    </tbody>
+	</table>
 </div>

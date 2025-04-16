@@ -30,45 +30,43 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         }
 
-        // GET: Reservation/Details/5
-        [HttpGet]
-        [Route("Reservation/Details/{id}")]
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _reservationDbContext.Reservations
-                .FirstOrDefaultAsync(m => m.ReservationId == id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-
-            return View(reservation);
-        }
 
         // GET: Reservation/Create
         [HttpGet]
         [Route("Reservation/Create")]
         public IActionResult Create()
         {
+            // Fetch customers and create SelectList
+            var customers = _reservationDbContext.Customers.ToList();
+            ViewBag.CustomerId = new SelectList(customers, "Id", "FirstNameLastName"); // Adjust property names
+
+            // Fetch vehicles and create SelectList
+            var vehicles = _reservationDbContext.Vehicles.ToList();
+            ViewBag.VehicleId = new SelectList(vehicles, "VehicleID", "VehicleModelFull"); // Adjust property names
+
             return View();
         }
 
         // POST: Reservation/Create
         [HttpPost]
         [Route("Reservation/Create")]
-        public async Task<IActionResult> Create([Bind("ReservationId,ReservationDate,ReservationCost")] Reservation reservation)
+        [ValidateAntiForgeryToken] // Important for security
+        public async Task<IActionResult> Create([Bind("ReservationId,CustomerInfoId,VehicleInfoId,ReservationDate,ReservationCost")] Reservation reservation)
         {
             if (ModelState.IsValid)
             {
-                _reservationDbContext.Add(reservation);
+                _reservationDbContext.Reservations.Add(reservation); // Assuming you have a DbSet<Reservation> in your context
                 await _reservationDbContext.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // If ModelState is invalid, repopulate ViewBag for the view
+            var customers = _reservationDbContext.Customers.ToList();
+            ViewBag.CustomerId = new SelectList(customers, "Id", "FirstNameLastName", reservation.CustomerInfoId); // Keep selected value
+
+            var vehicles = _reservationDbContext.Vehicles.ToList();
+            ViewBag.VehicleId = new SelectList(vehicles, "VehicleID", "VehicleModelFull", reservation.VehicleInfoId); // Keep selected value
+
             return View(reservation);
         }
 
@@ -110,7 +108,7 @@ namespace _3M1L_vehicle_rental_ms.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ReservationExists(reservation.ReservationId))
+                    if (id != reservation.ReservationId)
                     {
                         return NotFound();
                     }
@@ -142,11 +140,6 @@ namespace _3M1L_vehicle_rental_ms.Controllers
             }
 
             return View(reservation);
-        }
-
-        private bool ReservationExists(int id)
-        {
-            return _reservationDbContext.Reservations.Any(e => e.ReservationId == id);
         }
     }
 }

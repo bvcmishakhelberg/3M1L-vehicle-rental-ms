@@ -1,4 +1,5 @@
 ﻿using _3M1L_vehicle_rental_ms.Data;
+using _3M1L_vehicle_rental_ms.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,28 +11,32 @@ namespace _3M1L_vehicle_rental_ms.Controllers
 
         public HomeController(RentalDbContext context)
         {
-            _context = context;
+            this._context = context;
+        }
+
+
+
+        [HttpGet]
+        [Route("/")]
+        public async Task<IActionResult> Index()
+        {
+
+                var viewModel = new HomeViewModel
+                {
+                    Customers = await _context.Customers.ToListAsync(),
+                    Vehicles = await _context.Vehicles.ToListAsync(),
+                    Reservations = await _context.Reservations.ToListAsync()
+                };
+
+                return View(viewModel);
+
         }
 
         //[HttpGet]
         //[Route("/")]
-        //public async Task<IActionResult> Index()
+        //public IActionResult Index()
         //{
-
-        //    var reports = await _context.Reports
-        //        .Include(r => r.Reservation)
-        //        .Include(r => r.Customer)
-        //        .Include(r => r.Vehicle)
-        //        .ToListAsync();
-
-        //    return View(reports);
+        //    return View();
         //}
-
-        [HttpGet]
-        [Route("/")]
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

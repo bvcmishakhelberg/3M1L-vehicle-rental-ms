@@ -1,28 +1,51 @@
 ﻿@model _3M1L_vehicle_rental_ms.Models.Reservation
+@using _3M1L_vehicle_rental_ms.Models
 
 
 @{
     ViewData["Title"] = "Create";
 }
+@section Styles {
+    <link rel="stylesheet" href="~/css/styles.css" />
+}
 
 <h1>Create</h1>
 
-<h4>Reservation</h4>
+<div ><h4>Reservation</h4></div>
 <hr />
-<div class="row">
+<div class="row flex-column">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="CustomerInfoId" class="control-label">Customer</label>
+                <select asp-for="CustomerInfoId" class="form-control" asp-items="@ViewBag.CustomerId">
+                    <option value="">-- Select Customer --</option>
+                </select>
+                <span asp-validation-for="CustomerInfoId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="VehicleInfoId" class="control-label">Vehicle</label>
+                <select asp-for="VehicleInfoId" class="form-control" asp-items="@ViewBag.VehicleId">
+                    <option value="">-- Select Vehicle --</option>
+                </select>
+                <span asp-validation-for="VehicleInfoId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="ReservationDate" class="control-label"></label>
                 <input asp-for="ReservationDate" class="form-control" />
                 <span asp-validation-for="ReservationDate" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="ReservationCost" class="control-label"></label>
                 <input asp-for="ReservationCost" class="form-control" />
                 <span asp-validation-for="ReservationCost" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -34,6 +57,4 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+

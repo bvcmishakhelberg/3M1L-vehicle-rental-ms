@@ -63,22 +63,7 @@ namespace _3M1L_vehicle_rental_ms.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReportId"));
 
-                    b.Property<int>("CustomerID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VehicleID")
-                        .HasColumnType("int");
-
                     b.HasKey("ReportId");
-
-                    b.HasIndex("CustomerID");
-
-                    b.HasIndex("ReservationId");
-
-                    b.HasIndex("VehicleID");
 
                     b.ToTable("Reports");
                 });
@@ -101,14 +86,14 @@ namespace _3M1L_vehicle_rental_ms.Migrations
                     b.Property<DateTime>("ReservationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("VehicleInfoVehicleID")
+                    b.Property<int>("VehicleInfoId")
                         .HasColumnType("int");
 
                     b.HasKey("ReservationId");
 
                     b.HasIndex("CustomerInfoId");
 
-                    b.HasIndex("VehicleInfoVehicleID");
+                    b.HasIndex("VehicleInfoId");
 
                     b.ToTable("Reservations");
                 });
@@ -169,45 +154,18 @@ namespace _3M1L_vehicle_rental_ms.Migrations
                     b.ToTable("Vehicles");
                 });
 
-            modelBuilder.Entity("_3M1L_vehicle_rental_ms.Models.Report", b =>
-                {
-                    b.HasOne("_3M1L_vehicle_rental_ms.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_3M1L_vehicle_rental_ms.Models.Reservation", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("_3M1L_vehicle_rental_ms.Models.Vehicle", "Vehicle")
-                        .WithMany()
-                        .HasForeignKey("VehicleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("Reservation");
-
-                    b.Navigation("Vehicle");
-                });
-
             modelBuilder.Entity("_3M1L_vehicle_rental_ms.Models.Reservation", b =>
                 {
                     b.HasOne("_3M1L_vehicle_rental_ms.Models.Customer", "CustomerInfo")
                         .WithMany()
                         .HasForeignKey("CustomerInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_3M1L_vehicle_rental_ms.Models.Vehicle", "VehicleInfo")
                         .WithMany()
-                        .HasForeignKey("VehicleInfoVehicleID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("VehicleInfoId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("CustomerInfo");

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<_3M1L_vehicle_rental_ms.Models.Report>
+﻿@using _3M1L_vehicle_rental_ms.Models
+@model _3M1L_vehicle_rental_ms.Models.HomeViewModel
 
 @{
     ViewData["Title"] = "Report";
@@ -6,42 +7,69 @@
 
 <h1>Reports</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Reservation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Vehicle)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reservation.ReservationId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Vehicle.VehicleManufacturer)
-            </td>
-            <td>
-                    <a asp-action="Edit" asp-route-id="@item.ReportId" class="btn btn-info">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ReportId" class="btn btn-warning">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ReportId" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="spaces">
+    <h2>Customers</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>@customer.FirstName @customer.LastName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="spaces">
+    <h2>Vehicles</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Manufacturer</th>
+                <th>Model</th>
+                <th>Year</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var vehicle in Model.Vehicles)
+            {
+                <tr>
+                    <td>@vehicle.VehicleManufacturer</td>
+                    <td>@vehicle.VehicleModel</td>
+                    <td>@vehicle.VehicleYear</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="spaces">
+    <h2>Reservations</h2>
+    <table class="table">
+        <thead>
+			<tr>
+				<th>Date</th>
+                <th>Customer</th>
+                <th>Vehicle</th>         
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reservation in Model.Reservations)
+            {
+				<tr>
+					<td>@reservation.ReservationDate.ToShortDateString()</td>
+                    <td>@reservation.CustomerInfo.FirstName @reservation.CustomerInfo.LastName</td>
+                    <td>@reservation.VehicleInfo.VehicleModel</td>                       
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,4 +1,4 @@
-wwwroot\CSS\styles.css
+wwwroot\css\styles.css
 wwwroot\images\image_car.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
